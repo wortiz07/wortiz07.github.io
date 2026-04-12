@@ -15,16 +15,17 @@
     </header>
 
     <main class="galeria">
-        
         {% for archivo in site.static_files %}
             {% if archivo.path contains '/gifs/' %}
                 <div class="item-gif">
-                    <img src="{{ archivo.path | relative_url }}" alt="GIF animado">
+                    <img src="{{ archivo.path | remove_first: '/' }}" alt="GIF animado">
                 </div>
             {% endif %}
         {% endfor %}
-
     </main>
 
+    <div id="paginacion" class="paginacion"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
