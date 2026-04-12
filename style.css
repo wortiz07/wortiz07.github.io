@@ -6,53 +6,76 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
+    /* Tipografía más moderna y limpia */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    /* Un fondo oscuro elegante (Azul Pizarra) en lugar de negro puro */
+    background-color: #0f172a; 
+    color: #e2e8f0;
     padding: 20px;
 }
 
 header {
     text-align: center;
-    margin-bottom: 30px;
-    padding: 20px 0;
+    margin-bottom: 40px;
+    padding: 30px 0;
 }
 
 header h1 {
-    font-size: 2.5rem;
-    color: #222;
+    font-size: 3rem;
+    color: #ffffff;
+    letter-spacing: 1px;
+    /* Un brillo sutil detrás del título para que resalte */
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
 }
 
-/* --- LA CUADRÍCULA (GRID) QUE ORDENA TODO --- */
+/* --- LA CUADRÍCULA (GRID) --- */
 .galeria {
     display: grid;
-    /* Usamos auto-fill para que los elementos solos no se estiren */
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     justify-content: center; 
-    gap: 20px;
+    gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* --- EL DISEÑO DE CADA CUADRO --- */
+/* --- EL DISEÑO DE CADA CUADRO (DARK MODE) --- */
 .item-gif {
-    background-color: #fff;
-    border-radius: 8px;
+    /* Color de fondo de la tarjeta un poco más claro que el fondo general */
+    background-color: #1e293b; 
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    /* Sombra oscura y profunda */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5); 
     height: 300px;
-    /* Limitamos el ancho para que la última página se vea bien */
     max-width: 400px; 
     margin: 0 auto; 
     width: 100%;
+    /* Borde súper sutil para enmarcar */
+    border: 1px solid #334155;
+    /* Preparamos la animación para el hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* --- AJUSTE PERFECTO DE LAS IMÁGENES --- */
+/* EFECTO AL PASAR EL MOUSE POR LA TARJETA */
+.item-gif:hover {
+    transform: translateY(-10px); /* Eleva la tarjeta */
+    /* Le da un brillo azul sutil y agranda la sombra */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.7), 0 0 15px rgba(59, 130, 246, 0.2);
+    border-color: #3b82f6; /* El borde se pinta de azul */
+}
+
+/* --- AJUSTE DE LAS IMÁGENES --- */
 .item-gif img {
     width: 100%;
     height: 100%;
     object-fit: cover; 
     display: block;
+    transition: transform 0.5s ease;
+}
+
+/* EFECTO DE ZOOM EN LA IMAGEN AL PASAR EL MOUSE */
+.item-gif:hover img {
+    transform: scale(1.05);
 }
 
 /* --- SISTEMA DE PAGINACIÓN --- */
@@ -63,27 +86,33 @@ header h1 {
 .paginacion {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin: 40px 0;
+    gap: 12px;
+    margin: 50px 0;
 }
 
 .btn-pag {
-    padding: 10px 18px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 12px 20px;
+    background-color: #1e293b;
+    color: #cbd5e1;
+    border: 1px solid #334155;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     transition: all 0.3s ease;
 }
 
 .btn-pag:hover {
-    background-color: #e0e0e0;
+    background-color: #334155;
+    color: #fff;
+    transform: translateY(-2px);
 }
 
+/* BOTÓN DE LA PÁGINA ACTUAL */
 .btn-pag.activo {
-    background-color: #333;
-    color: #fff;
-    border-color: #333;
+    background-color: #3b82f6; /* Azul vibrante */
+    color: #ffffff;
+    border-color: #3b82f6;
+    /* Resplandor en el botón activo */
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); 
 }
