@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Galería de GIFs</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v={{ site.time | date: '%s' }}">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
         {% for archivo in site.static_files %}
             {% if archivo.path contains '/gifs/' %}
                 <div class="item-gif">
-                    <img src="{{ archivo.path | remove_first: '/' }}" alt="GIF animado">
+                    <img src="{{ archivo.path | remove_first: '/' }}?v={{ site.time | date: '%s' }}" alt="GIF animado">
                 </div>
             {% endif %}
         {% endfor %}
@@ -26,6 +26,6 @@
 
     <div id="paginacion" class="paginacion"></div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v={{ site.time | date: '%s' }}"></script>
 </body>
 </html>
