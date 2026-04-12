@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,7 +19,7 @@
         {% for archivo in site.static_files %}
             {% if archivo.path contains '/gifs/' %}
                 <div class="item-gif">
-                    <img src=".{{ archivo.path }}" alt="GIF animado">
+                    <img src="{{ site.baseurl }}{{ archivo.path }}" alt="GIF animado">
                 </div>
             {% endif %}
         {% endfor %}
