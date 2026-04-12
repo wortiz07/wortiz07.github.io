@@ -13,23 +13,16 @@
     </header>
 
     <main class="galeria">
-        <div class="item-gif">
-            <img src="gifs/1.gif" alt="GIF 1">
-        </div>
-
-        <div class="item-gif">
-            <img src="gifs/2.gif" alt="GIF 2">
-        </div>
-
-        <div class="item-gif">
-            <img src="gifs/3.gif" alt="GIF 3">
-        </div>
-
-        <div class="item-gif">
-            <img src="gifs/4.gif" alt="GIF 4">
-        </div>
         
-        </main>
+        {% for archivo in site.static_files %}
+            {% if archivo.path contains '/gifs/' %}
+                <div class="item-gif">
+                    <img src=".{{ archivo.path }}" alt="GIF animado">
+                </div>
+            {% endif %}
+        {% endfor %}
+
+    </main>
 
 </body>
 </html>
