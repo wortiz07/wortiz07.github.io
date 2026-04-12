@@ -3,30 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio Visual | William Ortiz</title>
+    <title>William Ortiz | Portafolio Visual y Analítico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Mi Portafolio de GIFs</h1>
-        <p>Galería de animaciones, ediciones y proyectos visuales.</p>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>William Ortiz</h1>
+            <p class="subtitle">Especialista en Business Intelligence & Edición Visual</p>
+            <p class="bio">Transformando datos en decisiones y conceptos en realidades visuales. Explora mis proyectos de análisis comercial y mis ediciones mediante inteligencia artificial.</p>
+            <div class="social-links">
+                <a href="https://github.com/tu-usuario" target="_blank" class="btn">GitHub</a>
+                <a href="https://linkedin.com/in/tu-usuario" target="_blank" class="btn btn-outline">LinkedIn</a>
+            </div>
+        </div>
     </header>
 
-    <main class="gallery">
-        <div class="gif-item">
-            <img src="gifs/proyecto1.gif" alt="Edición visual 1">
-            <div class="descripcion">
-                <h3>Transformación de objeto</h3>
-            </div>
+    <main class="portfolio-section">
+        
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="ai-edit">Edición con IA</button>
+            <button class="filter-btn" data-filter="bi-dashboards">Dashboards & BI</button>
         </div>
 
-        <div class="gif-item">
-            <img src="gifs/proyecto2.gif" alt="Edición visual 2">
-            <div class="descripcion">
-                <h3>Cambio de fondo</h3>
+        <div class="gallery">
+            
+            <div class="project-card" data-category="ai-edit">
+                <div class="img-container">
+                    <img src="gifs/reemplazo-fondo.gif" alt="Edición de fondo con IA">
+                </div>
+                <div class="project-info">
+                    <span class="tag">Edición con IA</span>
+                    <h3>Reemplazo de Entornos</h3>
+                    <p>Modificación de objetos y eliminación de fondos utilizando herramientas avanzadas de IA.</p>
+                </div>
             </div>
-        </div>
 
-        </main>
+            <div class="project-card" data-category="bi-dashboards">
+                <div class="img-container">
+                    <img src="gifs/dashboard-ventas.gif" alt="Dashboard Sell-in y Sell-out">
+                </div>
+                <div class="project-info">
+                    <span class="tag tag-bi">Business Intelligence</span>
+                    <h3>Dashboard Comercial</h3>
+                    <p>Seguimiento de KPIs de retail: análisis de Sell-in, Sell-out y Sell-Through Rate.</p>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="ai-edit">
+                <div class="img-container">
+                    <img src="gifs/face-swap.gif" alt="Modificación facial">
+                </div>
+                <div class="project-info">
+                    <span class="tag">Edición con IA</span>
+                    <h3>Transformación Facial</h3>
+                    <p>Ajuste de expresiones y atributos faciales manteniendo el realismo de la imagen original.</p>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="bi-dashboards">
+                <div class="img-container">
+                    <img src="gifs/python-etl.gif" alt="Procesamiento de datos con Python">
+                </div>
+                <div class="project-info">
+                    <span class="tag tag-data">Data Engineering</span>
+                    <h3>Automatización con Python</h3>
+                    <p>Script en Pandas para limpieza de datos y conversión masiva de CSV a Parquet.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 William Ortiz. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
