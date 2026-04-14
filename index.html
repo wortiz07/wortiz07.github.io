@@ -18,7 +18,12 @@
         {% for archivo in site.static_files %}
             {% if archivo.path contains '/gifs/' %}
                 <div class="item-gif">
-                    <img src="{{ archivo.path | remove_first: '/' }}?v={{ site.time | date: '%s' }}" alt="GIF animado">
+                    <div class="img-wrapper">
+                        <img src="{{ archivo.path | remove_first: '/' }}?v={{ site.time | date: '%s' }}" alt="GIF animado">
+                    </div>
+                    <a href="{{ archivo.path | remove_first: '/' }}" download class="btn-descarga">
+                        Descargar
+                    </a>
                 </div>
             {% endif %}
         {% endfor %}
