@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const items = document.querySelectorAll(".item-gif");
     const paginacionContenedor = document.getElementById("paginacion");
     
-    // Aquí puedes cambiar cuántos GIFs quieres por página
     const itemsPorPagina = 10; 
     let paginaActual = 1;
 
@@ -25,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const totalPaginas = Math.ceil(items.length / itemsPorPagina);
         paginacionContenedor.innerHTML = ""; 
 
-        // Si hay 10 o menos GIFs, no muestra botones de paginación
         if (totalPaginas <= 1) return; 
 
         for (let i = 1; i <= totalPaginas; i++) {
@@ -37,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
             boton.addEventListener("click", function() {
                 paginaActual = i;
                 mostrarPagina(paginaActual);
-                // Hace que la pantalla suba al inicio suavemente al cambiar de página
+
                 window.scrollTo({ top: 0, behavior: 'smooth' }); 
             });
 
@@ -55,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Arrancar el paginador
     crearBotones();
     mostrarPagina(paginaActual);
 });
