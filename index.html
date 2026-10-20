@@ -1,36 +1,37 @@
----
----
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Galería de GIFs</title>
-    <link rel="stylesheet" href="style.css?v={{ site.time | date: '%s' }}">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aguinaldo</title>
+<style>
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#ffeb3b;font-family:system-ui,Arial,sans-serif;color:#222;text-align:center}
+  main{padding:16px;max-width:900px}
+  h1{font-size:clamp(2rem,7vw,4rem);margin:0 0 .3em}
+  h2{font-size:clamp(1.2rem,4vw,2rem);margin:0 0 .5em}
+  #t{font-size:clamp(1.4rem,5vw,3rem);font-weight:700;font-variant-numeric:tabular-nums}
+  img{height:min(40vh,320px);margin-top:1em;mix-blend-mode:multiply}
+</style>
 </head>
 <body>
-
-    <header>
-        <h1>Galería de GIFs</h1>
-    </header>
-
-    <main class="galeria">
-        {% for archivo in site.static_files %}
-            {% if archivo.path contains '/gifs/' %}
-                <div class="item-gif">
-                    <div class="img-wrapper">
-                        <img src="{{ archivo.path | remove_first: '/' }}?v={{ site.time | date: '%s' }}" alt="GIF animado">
-                    </div>
-                    <a href="{{ archivo.path | remove_first: '/' }}" download class="btn-descarga">
-                        Descargar
-                    </a>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </main>
-
-    <div id="paginacion" class="paginacion"></div>
-
-    <script src="script.js?v={{ site.time | date: '%s' }}"></script>
+<main>
+  <h1>AGUINALDOOOO!!!!!!!!!!!</h1>
+  <h2 id="msg">SOLO FALTAN</h2>
+  <div id="t"></div>
+  <img src="baile.gif" alt="">
+</main>
+<script>
+  // Cambiá la fecha acá (año, mes 1-12, día)
+  const META = new Date(2026, 11, 15, 0, 0, 0);
+  const t = document.getElementById('t'), msg = document.getElementById('msg');
+  const pl = (n, s, p) => n + ' ' + (n === 1 ? s : p);
+  function tick(){
+    let s = Math.floor((META - new Date()) / 1000);
+    if (s <= 0){ msg.textContent = '¡LLEGÓ EL AGUINALDO!'; t.textContent = '🎉💰🎉'; return; }
+    const d = Math.floor(s/86400), h = Math.floor(s%86400/3600), m = Math.floor(s%3600/60);
+    t.textContent = pl(d,'día','días')+', '+pl(h,'hora','horas')+', '+pl(m,'minuto','minutos')+' y '+pl(s%60,'segundo','segundos');
+  }
+  tick(); setInterval(tick, 1000);
+</script>
 </body>
 </html>
