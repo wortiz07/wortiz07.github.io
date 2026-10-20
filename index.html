@@ -6,7 +6,13 @@
 <title>Aguinaldo</title>
 <style>
   body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#ffeb3b;font-family:system-ui,Arial,sans-serif;color:#222;text-align:center}
-  main{padding:16px;max-width:900px}
+  .wrap{display:grid;grid-template-columns:minmax(140px,1fr) minmax(0,2.2fr) minmax(140px,1fr);gap:16px;align-items:center;width:100%;max-width:1400px;padding:16px;box-sizing:border-box}
+  .side{min-width:0}
+  main{padding:0}
+  @media(max-width:700px){
+    .wrap{grid-template-columns:1fr 1fr}
+    main{grid-column:1/-1;order:-1}
+  }
   h1{font-size:clamp(2rem,7vw,4rem);margin:0 0 .3em}
   h2{font-size:clamp(1.2rem,4vw,2rem);margin:0 0 .5em}
   #t{font-size:clamp(1.4rem,5vw,3rem);font-weight:700;font-variant-numeric:tabular-nums}
@@ -14,12 +20,21 @@
 </style>
 </head>
 <body>
+<div class="wrap">
+<div class="side">
+  <div class="tenor-gif-embed" data-postid="23801255" data-share-method="host" data-aspect-ratio="1.33333" data-width="100%"><a href="https://tenor.com/view/xrd-exrd-crypto-btc-eth-gif-23801255">Xrd Exrd GIF</a>from <a href="https://tenor.com/search/xrd-gifs">Xrd GIFs</a></div>
+</div>
 <main>
   <h1>AGUINALDOOOO!!!!!!!!!!!</h1>
   <h2 id="msg">SOLO FALTAN</h2>
   <div id="t"></div>
   <img src="baile.gif" alt="">
 </main>
+<div class="side">
+  <div class="tenor-gif-embed" data-postid="12654501364171447161" data-share-method="host" data-aspect-ratio="0.801205" data-width="100%"><a href="https://tenor.com/view/hasbulla-gif-12654501364171447161">Hasbulla GIF</a>from <a href="https://tenor.com/search/hasbulla-gifs">Hasbulla GIFs</a></div>
+</div>
+</div>
+<script async src="https://tenor.com/embed.js"></script>
 <script>
   // Cambiá la fecha acá (año, mes 1-12, día)
   const META = new Date(2026, 11, 15, 0, 0, 0);
