@@ -27,7 +27,7 @@
   const pl = (n, s, p) => n + ' ' + (n === 1 ? s : p);
   function tick(){
     let s = Math.floor((META - new Date()) / 1000);
-    if (s <= 0){ msg.textContent = '¡LLEGÓ EL AGUINALDO!'; t.textContent = '🎉💰🎉'; return; }
+    if (s <= 0){ msg.textContent = '¡HOY SE COOBRAAA!'; t.textContent = '🎉💰🎉'; return; }
     const d = Math.floor(s/86400), h = Math.floor(s%86400/3600), m = Math.floor(s%3600/60);
     t.textContent = pl(d,'día','días')+', '+pl(h,'hora','horas')+', '+pl(m,'minuto','minutos')+' y '+pl(s%60,'segundo','segundos');
   }
