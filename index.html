@@ -5,31 +5,55 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Aguinaldo</title>
 <style>
-  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#ffeb3b;font-family:system-ui,Arial,sans-serif;color:#222;text-align:center}
-  main{padding:16px;max-width:900px}
-  h1{font-size:clamp(2rem,7vw,4rem);margin:0 0 .3em}
-  h2{font-size:clamp(1.2rem,4vw,2rem);margin:0 0 .5em}
-  #t{font-size:clamp(1.4rem,5vw,3rem);font-weight:700;font-variant-numeric:tabular-nums}
-  img{height:min(40vh,320px);margin-top:1em;mix-blend-mode:multiply}
+  :root{--bg:#000;--card:#0d0d0d;--y:#ffeb3b}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);font-family:system-ui,Arial,sans-serif;color:var(--y);text-align:center}
+  main{padding:16px;width:100%;max-width:1200px}
+  h1{font-size:clamp(1.6rem,6vw,4rem);margin:0 0 .3em;word-break:break-word}
+  h2{font-size:clamp(1.1rem,3.5vw,2rem);margin:0 0 .8em;letter-spacing:.15em}
+  .card{display:flex;align-items:center;gap:clamp(16px,3vw,40px);background:var(--card);border:1px solid rgba(255,235,59,.18);border-radius:20px;padding:clamp(14px,2.5vw,32px);box-shadow:0 10px 40px rgba(0,0,0,.5)}
+  .card img{flex:none;height:clamp(160px,28vw,300px);aspect-ratio:1;object-fit:contain}
+  #t{flex:1;display:grid;grid-template-columns:repeat(4,1fr);min-width:0}
+  .u{padding:0 clamp(4px,1.5vw,24px);border-left:1px solid rgba(255,235,59,.25)}
+  .u:first-child{border-left:0}
+  .n{font-family:ui-monospace,Menlo,Consolas,"Courier New",monospace;font-weight:800;font-variant-numeric:tabular-nums;font-size:clamp(2rem,9vw,7rem);line-height:1.1}
+  .l{font-size:clamp(.7rem,2.2vw,1.6rem);opacity:.7;margin-top:.3em}
+  #fin{font-size:clamp(2rem,8vw,4rem);margin-top:.5em}
+  @media(max-width:700px){
+    .card{flex-direction:column}
+    .card img{height:auto;width:min(60%,240px)}
+    #t{width:100%}
+    .n{font-size:clamp(1.8rem,10vw,3rem)}
+  }
 </style>
 </head>
 <body>
 <main>
   <h1>AGUINALDOOOO!!!!!!!!!!!</h1>
   <h2 id="msg">SOLO FALTAN</h2>
-  <div id="t"></div>
-  <img src="baile.gif" alt="">
+  <div class="card">
+    <img src="money.gif" alt="">
+    <div id="t">
+      <div class="u"><div class="n" id="d">0</div><div class="l" id="ld">Días</div></div>
+      <div class="u"><div class="n" id="h">0</div><div class="l" id="lh">Horas</div></div>
+      <div class="u"><div class="n" id="m">0</div><div class="l" id="lm">Minutos</div></div>
+      <div class="u"><div class="n" id="s">0</div><div class="l" id="ls">Segundos</div></div>
+    </div>
+  </div>
+  <div id="fin"></div>
 </main>
 <script>
   // Cambiá la fecha acá (año, mes 0-11, día)
   const META = new Date(2026, 11, 15, 0, 0, 0);
-  const t = document.getElementById('t'), msg = document.getElementById('msg');
-  const pl = (n, s, p) => n + ' ' + (n === 1 ? s : p);
+  const $ = id => document.getElementById(id);
+  const set = (k, n, s, p) => { $(k).textContent = n; $('l'+k).textContent = n === 1 ? s : p; };
   function tick(){
-    let s = Math.floor((META - new Date()) / 1000);
-    if (s <= 0){ msg.textContent = '¡HOY SE COOBRAAA!'; t.textContent = '🎉💰🎉'; return; }
-    const d = Math.floor(s/86400), h = Math.floor(s%86400/3600), m = Math.floor(s%3600/60);
-    t.textContent = pl(d,'día','días')+', '+pl(h,'hora','horas')+', '+pl(m,'minuto','minutos')+' y '+pl(s%60,'segundo','segundos');
+    let t = Math.floor((META - new Date()) / 1000);
+    if (t <= 0){ $('msg').textContent = '¡HOY SE COOBRAAA!'; $('fin').textContent = '🎉💰🎉'; t = 0; }
+    set('d', Math.floor(t/86400), 'Día', 'Días');
+    set('h', Math.floor(t%86400/3600), 'Hora', 'Horas');
+    set('m', Math.floor(t%3600/60), 'Minuto', 'Minutos');
+    set('s', t%60, 'Segundo', 'Segundos');
   }
   tick(); setInterval(tick, 1000);
 </script>
